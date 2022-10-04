@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { SearchIcon } from '@heroicons/react/outline';
 
 function Header() {
   return (
@@ -13,6 +14,14 @@ function Header() {
             objectFit='contain'
             className='cursor-pointer'
           />
+        </div>
+
+        <div className='flex items-center h-full rounded-md flex-grow cursor-pointer bg-yellow-400 hover:bg-yellow-500'>
+          <input
+            className='p-2 h-12 w-6 flex-grow flex-shrink rounded-l-md focus:outline-none'
+            type='text'
+          />
+          <SearchIcon className='h-12 p-4' />
         </div>
       </div>
 
