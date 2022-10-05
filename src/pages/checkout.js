@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux';
 import Currency from 'react-currency-formatter';
 
 import Header from '../components/Header';
-import { selectItems } from '../slices/basketSlice';
+import { selectItems, selectTotal } from '../slices/basketSlice';
 import CheckoutProduct from '../components/CheckoutProduct';
 
 function Checkout() {
   const items = useSelector(selectItems);
+  const total = useSelector(selectTotal);
 
   return (
     <div className='bg-gray-100'>
@@ -58,6 +59,21 @@ function Checkout() {
               )
             )}
           </div>
+        </div>
+
+        <div className='flex flex-col bg-white p-10 shadow-md'>
+          {items.length > 0 && (
+            <>
+              <h2 className='whitespace-nowrap'>
+                Subtotal ({items.length} items): {''}
+                <span className='font-bold'>
+                  <Currency quantity={total} />
+                </span>
+              </h2>
+
+              <button className='button mt-2'>Proceed to Checkout</button>
+            </>
+          )}
         </div>
       </main>
     </div>
