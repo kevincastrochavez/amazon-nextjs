@@ -12,7 +12,7 @@ module.exports = {
       {
         source: '/api/create-checkout-session',
         destination:
-          'https://next-server-eta.vercel.app/create-checkout-session',
+          'https://next-server-eta.vercel.app/api/create-checkout-session',
       },
     ];
   },
