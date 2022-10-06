@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import Currency from 'react-currency-formatter';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
-import NextCors from 'nextjs-cors';
 
 import Header from '../components/Header';
 import { selectItems, selectTotal } from '../slices/basketSlice';
@@ -19,15 +18,12 @@ function Checkout() {
   const createCheckoutSession = async () => {
     const stripe = await stripePromise;
 
-    const checkoutSession = await NextCors(
-      axios.post(
-        'https://next-server-cvwel6gtv-kevincastrochavez.vercel.app/api/create-checkout-session',
-        {
-          items,
-        }
-      )
+    const checkoutSession = await axios.post(
+      'https://next-server-cvwel6gtv-kevincastrochavez.vercel.app/api/create-checkout-session',
+      {
+        items,
+      }
     );
-
     const result = await stripe.redirectToCheckout({
       sessionId: checkoutSession.data.id,
     });
